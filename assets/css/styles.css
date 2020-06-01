@@ -1,0 +1,71 @@
+.active:hover,.active:active{
+    color: #ecfbff;
+    background: rgb(40, 141, 196);
+}
+
+.gauge{
+    min-width: 320px;
+    
+    margin: 5px 0px;
+    text-align: center;
+}
+
+.ext{
+    margin: 5px;
+}
+
+.btn-tag{
+    text-align: center;
+    color: #ecfbff;
+    background: rgb(1,0,138);
+
+    border-radius: 40px;
+    min-height: 70px;
+    width: 70%;
+
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 20px;
+    margin-bottom: 0px;
+
+    border-width:2px;
+    outline: none !important;
+}
+
+.btn-tag:hover, .btn-tag:active, .btn-tag:focus{
+    color: #ecfbff;
+}
+
+.on{
+    background-color: rgb(40, 141, 196);
+}
+
+
+.bg-tag{
+    background-color: rgb(1,0,138)!important;
+}
+
+.bg-tag-light{
+    background-color: #ecfbff;
+}
+
+
+.start{
+    height: 100px;
+    color: #ecfbff;
+    text-align: center;
+    border-radius: 10px;
+}
+.start-mini{
+    
+    text-align: center;
+    color: #ecfbff;
+    background: rgb(1,0,138);
+    height: 50px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.start:active{
+    background-color: rgb(40, 141, 196);
+}

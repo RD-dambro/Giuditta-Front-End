@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+
+    <head >
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=yes">
+        <title>Giuditta 0.1</title>
+        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/css/styles.css">
+        <link rel="stylesheet" href="assets/css/slider.css">
+        
+    </head>
+
+    <body class="bg-tag-light">
+        
+        <nav class="navbar navbar-dark navbar-expand-sm fixed-top bg-tag text-center">
+            <div class="container-fluid"><a class="navbar-brand" href="index.html">TAG</a><button data-toggle="collapse" data-target="#navcol-1" class="navbar-toggler"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse"
+                    id="navcol-1">
+                    <ul class="nav navbar-nav">
+                        <li role="presentation" class="nav-item"><a class="nav-link active" href="manual.html">Manual</a></li>
+                        <li role="presentation" class="nav-item"><a class="nav-link active" href="table.html">Table</a></li>
+                        <li role="presentation" class="nav-item"><a class="nav-link active" href="login.html">LogIn</a></li>
+                        <li role="presentation" class="nav-item"><a class="nav-link active" href="user.html">User</a></li>
+                        <li role="presentation" class="nav-item"><a class="nav-link active" href="settings.html">Settings</a></li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="assets/js/gauge.min.js"></script>
+        <script src="assets/js/gauge.js"></script>
+        <script src="assets/js/toggle.js"></script>
+        
+        
+        <script src="assets/js/giuditta.js"></script>
+
+        <div class="row ext" style="margin-top: 80px;">
+            <div class="col-sm-8">
+                <select class="form-control"  style="height:100px; text-align: center; font-size: 20px;">
+                    <option value="" >Select A Recipe</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </div>
+            
+            <div class="col-sm-4">
+                <button class="btn btn-tag start" type="button" id="start" value="OFF" onclick="toggle(id)">OFF</button>
+            </div>
+        </div>
+        
+
+        <div class="row" style="margin: 0px 20px;">
+            <div class="col-lg-8" style="text-align: center;">
+                <p id="log" style="font-size: 20px;">mm/dd hh:mm:ss Error Report</p>
+            </div>
+            <div class="col-lg-4" style="text-align: center; ">
+                <p>Time to end phase:</p>
+                <p id="timer" style="font-size: 50px;"></p>
+            </div>
+        </div>
+
+        <script>
+            // Set the date we're counting down to
+            var countDownDate = new Date("May 29, 2020 15:37:25").getTime();
+            
+            // Update the count down every 1 second
+            var x = setInterval(function() {
+            
+              // Get today's date and time
+              var now = new Date().getTime();
+            
+              // Find the distance between now and the count down date
+              var distance = countDownDate - now;
+            
+              // Time calculations for days, hours, minutes and seconds
+              var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+              var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+              var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+              var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+              // Display the result in the element with id="demo"
+              document.getElementById("timer").innerHTML = days + "d " + hours + "h "
+              + minutes + "m " + seconds + "s ";
+            
+              // If the count down is finished, write some text
+              if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("timer").innerHTML = "EXPIRED";
+              }
+            }, 1000);
+            </script>
+
+
+        <div class="row">
+            <div class="col-sm-3 gauge">
+                
+                <canvas id="room-temperature"></canvas>
+                <p id="room-temperature-value"></p>
+
+                <script>
+
+                    var target = document.getElementById('room-temperature'); // your canvas element
+                    var gauge = new Gauge(target).setOptions(opts); // create sexy gauge!
+                    gauge.maxValue = 100; // set max gauge value
+                    gauge.setMinValue(0);  // Prefer setter over gauge.minValue = 0
+                    gauge.animationSpeed = 1; // set animation speed (32 is default value)
+                    gauge.set(giuditta_sensors.room_temperature); // set actual value
+                    
+                </script>
+            </div>
+
+
+            <div class="col-sm-3 gauge">
+                
+                <canvas id="room-humidity"></canvas>
+                <p id="room-humidity-value"></p>
+                
+        
+                <script>
+
+                    var target = document.getElementById('room-humidity'); // your canvas element
+                    var gauge = new Gauge(target).setOptions(opts); // create sexy gauge!
+                    gauge.maxValue = 100; // set max gauge value
+                    gauge.setMinValue(0);  // Prefer setter over gauge.minValue = 0
+                    gauge.animationSpeed = 1; // set animation speed (32 is default value)
+                    gauge.set(giuditta_sensors.room_humidity); // set actual value
+                    
+                </script>
+            </div>
+            
+
+
+            
+            <div class="col-sm-3 gauge">
+                
+                <canvas id="boiler-temperature"></canvas>
+                <p id="boiler-temperature-value"></p>
+
+                
+        
+                <script>
+
+                    var target = document.getElementById('boiler-temperature'); // your canvas element
+                    var gauge = new Gauge(target).setOptions(opts); // create sexy gauge!
+                    gauge.maxValue = 100; // set max gauge value
+                    gauge.setMinValue(0);  // Prefer setter over gauge.minValue = 0
+                    gauge.animationSpeed = 1; // set animation speed (32 is default value)
+                    gauge.set(giuditta_sensors.boiler_temperature); // set actual value
+                    
+                </script>
+            </div>
+            <div class="col-sm-3 gauge">
+                
+                <canvas id="radiator-temperature"></canvas>
+                <p id="radiator-temperature-value"></p>
+                
+        
+                <script>
+
+                    var target = document.getElementById('radiator-temperature'); // your canvas element
+                    var gauge = new Gauge(target).setOptions(opts); // create sexy gauge!
+                    gauge.maxValue = 100; // set max gauge value
+                    gauge.setMinValue(0);  // Prefer setter over gauge.minValue = 0
+                    gauge.animationSpeed = 1; // set animation speed (32 is default value)
+                    gauge.set(giuditta_sensors.radiator_temperature); // set actual value
+                    
+                </script>
+            </div>
+        </div>
+
+
+        <script>
+            /* update gauge */
+            document.getElementById('room-temperature-value').innerHTML = 
+                "Room Temperature: " + giuditta_sensors.room_temperature + "°C";
+            document.getElementById('room-humidity-value').innerHTML = 
+                "Room Humidity: " + giuditta_sensors.room_humidity + "%";
+            document.getElementById('boiler-temperature-value').innerHTML = 
+                "Boiler Temperature: " + giuditta_sensors.boiler_temperature + "°C";
+            document.getElementById('radiator-temperature-value').innerHTML = 
+                "Radiator Temperature: " + giuditta_sensors.radiator_temperature + "°C";
+            /***************************************/
+        </script>
+
+    </body>
+</html>

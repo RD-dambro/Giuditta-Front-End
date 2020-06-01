@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+    <head >
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=yes">
+        <title>Giuditta 0.1</title>
+        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/css/styles.css">
+        
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+        <link href="assets/css/tabulator.min.css" rel="stylesheet">
+        <script src="assets/js/tabulator.min.js"></script>
+        <script src="assets/js/giuditta.js"></script>
+        
+    </head>
+
+    <body class="bg-tag-light">
+        
+        <nav class="navbar navbar-dark navbar-expand-sm fixed-top bg-tag text-center">
+            <div class="container-fluid"><a class="navbar-brand" href="index.html">TAG</a><button data-toggle="collapse" data-target="#navcol-1" class="navbar-toggler"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse"
+                    id="navcol-1">
+                    <ul class="nav navbar-nav">
+                        <li role="presentation" class="nav-item"><a class="nav-link active" href="manual.html">Manual</a></li>
+                        <li role="presentation" class="nav-item"><a class="nav-link active" href="table.html">Table</a></li>
+                        <li role="presentation" class="nav-item"><a class="nav-link active" href="login.html">LogIn</a></li>
+                        <li role="presentation" class="nav-item"><a class="nav-link active" href="user.html">User</a></li>
+                        <li role="presentation" class="nav-item"><a class="nav-link active" href="settings.html">Settings</a></li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="container-fluid" style="margin-top: 80px;">
+            <div class="row">
+                <div class="col-md-2">
+                    <button class="btn start-mini" type="button" onclick="createRecipe()" >ADD</button>
+                </div>
+                <div class="col-md-2" style="max-width: 320px;">
+                    <input type="text" name="recipe_name" id="recipe_name" value="" placeholder="Recipe Name">
+                </div>
+                
+                <div class="col-md-2">
+                    <p>Edit:</p>
+                </div>
+                <div class="col-md-2" style="max-width: 320px;">
+                    <select class="form-control"  style="text-align: center; font-size: 16px;" >
+                        <option value="">Select A Recipe</option>
+                        <option value="nome_ricetta" id="op1"  onclick="editRecipe(value)">Recipe 1</option>
+                    </select>
+                        
+                </div>
+                
+            </div> 
+        </div>
+        <script>
+            table_data[0]["name"]="dddd";
+            console.log(table_data[0].name)
+        </script>
+        <div class="container-fluid" style="margin-top: 80px;">    
+            <div id="table"></div>
+        </div>
+        
+        <script>
+            var table = new Tabulator("#table", 
+                {
+                    cellEdited:function(cell){
+                        var row = cell.getRow()._row.data.id;
+                        var col = cell.getColumn()._column.field;
+                        var value = cell.getValue();
+                        
+                        console.log("Phase n. " + row + "\nProperty: " + col + "\nValue: " + value);
+
+                        if(checkDataRules(row,col, value)) sendData("data",table_data);
+                        else cell.restoreOldValue();
+                        
+                        
+                        /*
+                        var tx_string = "?";
+                        var len = table_data.length;
+                        for(var i = 0; i<len; i++)
+                        {
+                            tx_string += "dict"+String(i)+"="+JSON.stringify(table_data[i]);
+                            if(i<(len-1)) tx_string+="&";
+                        }
+                        */
+
+                        //var tx_string = "?"+""+"="+row+"&"+col+"="+value;
+                        
+                        //xhttp.setRequestHeader("Content-type","application/json");
+                        
+
+                    },
+                    resizableColumns:false,
+                    pagination:"local",
+                    paginationSize:10,
+
+                    data:table_data, //assign data to table
+                    layout:"fitColumns", //fit columns to width of table (optional)
+                    columns:phase_cols,
+                }
+            );
+        </script>
+
+        <div class="row" style="margin: 10px 20px">
+            <div class="col-lg">
+                <button class="btn btn-tag start" type="button" >Edit Recipe</button>
+            </div>
+
+            
+        </div>
+
+
+    </body>
+</html>
