@@ -41,34 +41,38 @@
 
         <script src="assets/js/giuditta.js"></script>
 
-        <div class="row ext" style="margin-top: 80px;">
-            <div class="col-sm-8">
-                <select class="form-control"  style="height:100px; text-align: center; font-size: 20px;">
-                    <option value="" >Select A Recipe</option>
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                </select>
-            </div>
+        <div class="container-fluid">
+          <div class="row" style="margin-top: 80px;">
+              <div class="col gauge">
+                  <select class="form-control"  style="margin:20px 10px; height:100px; text-align: center; font-size: 20px;">
+                      <option value="" >Select A Recipe</option>
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5</option>
+                  </select>
+              </div>
 
-            <div class="col-sm-4">
-                <button class="btn btn-tag start" type="button" id="start" value="OFF" onclick="toggle(id)">OFF</button>
-            </div>
+              <div class="col gauge">
+                  <button class="btn btn-tag start" type="button" id="start" value="OFF" onclick="toggle(id)">OFF</button>
+              </div>
+          </div>
         </div>
 
 
-        <div class="row" style="margin: 0px 20px;">
-            <div class="col-lg-8" style="text-align: center;">
-                <p id="log" style="font-size: 20px;">mm/dd hh:mm:ss Error Report</p>
-            </div>
-            <div class="col-lg-4" style="text-align: center; ">
-                <p>Time to end phase:</p>
-                <p id="timer" style="font-size: 50px;"></p>
-            </div>
-        </div>
+        <div class="container-fluid">
 
+          <div class="row" style="margin: 20px 0px;">
+              <div class="col" style="text-align: center;">
+                  <p id="log" style="font-size: 20px;">mm/dd hh:mm:ss Error Report</p>
+              </div>
+              <div class="col" style="text-align: center; ">
+                  <p>Time to end phase:</p>
+                  <p id="timer" style="font-size: 40px;"></p>
+              </div>
+          </div>
+        </div>
         <script>
             // Set the date we're counting down to
             var countDownDate = new Date("May 29, 2020 15:37:25").getTime();
@@ -100,83 +104,85 @@
             }, 1000);
             </script>
 
+        <div class="container-fluid">
+          <div class="row">
+              <div class="col gauge">
 
-        <div class="row">
-            <div class="col-sm-3 gauge">
+                  <canvas id="room-temperature"></canvas>
+                  <p id="room-temperature-value"></p>
 
-                <canvas id="room-temperature"></canvas>
-                <p id="room-temperature-value"></p>
+                  <script>
 
-                <script>
+                      var target = document.getElementById('room-temperature'); // your canvas element
+                      var gauge = new Gauge(target).setOptions(opts); // create sexy gauge!
+                      gauge.maxValue = 100; // set max gauge value
+                      gauge.setMinValue(0);  // Prefer setter over gauge.minValue = 0
+                      gauge.animationSpeed = 1; // set animation speed (32 is default value)
+                      gauge.set(giuditta_sensors.room_temperature); // set actual value
 
-                    var target = document.getElementById('room-temperature'); // your canvas element
-                    var gauge = new Gauge(target).setOptions(opts); // create sexy gauge!
-                    gauge.maxValue = 100; // set max gauge value
-                    gauge.setMinValue(0);  // Prefer setter over gauge.minValue = 0
-                    gauge.animationSpeed = 1; // set animation speed (32 is default value)
-                    gauge.set(giuditta_sensors.room_temperature); // set actual value
-
-                </script>
-            </div>
-
-
-            <div class="col-sm-3 gauge">
-
-                <canvas id="room-humidity"></canvas>
-                <p id="room-humidity-value"></p>
+                  </script>
+              </div>
 
 
-                <script>
+              <div class="col gauge">
 
-                    var target = document.getElementById('room-humidity'); // your canvas element
-                    var gauge = new Gauge(target).setOptions(opts); // create sexy gauge!
-                    gauge.maxValue = 100; // set max gauge value
-                    gauge.setMinValue(0);  // Prefer setter over gauge.minValue = 0
-                    gauge.animationSpeed = 1; // set animation speed (32 is default value)
-                    gauge.set(giuditta_sensors.room_humidity); // set actual value
-
-                </script>
-            </div>
+                  <canvas id="room-humidity"></canvas>
+                  <p id="room-humidity-value"></p>
 
 
+                  <script>
 
+                      var target = document.getElementById('room-humidity'); // your canvas element
+                      var gauge = new Gauge(target).setOptions(opts); // create sexy gauge!
+                      gauge.maxValue = 100; // set max gauge value
+                      gauge.setMinValue(0);  // Prefer setter over gauge.minValue = 0
+                      gauge.animationSpeed = 1; // set animation speed (32 is default value)
+                      gauge.set(giuditta_sensors.room_humidity); // set actual value
 
-            <div class="col-sm-3 gauge">
-
-                <canvas id="boiler-temperature"></canvas>
-                <p id="boiler-temperature-value"></p>
+                  </script>
+              </div>
 
 
 
-                <script>
 
-                    var target = document.getElementById('boiler-temperature'); // your canvas element
-                    var gauge = new Gauge(target).setOptions(opts); // create sexy gauge!
-                    gauge.maxValue = 100; // set max gauge value
-                    gauge.setMinValue(0);  // Prefer setter over gauge.minValue = 0
-                    gauge.animationSpeed = 1; // set animation speed (32 is default value)
-                    gauge.set(giuditta_sensors.boiler_temperature); // set actual value
+              <div class="col gauge">
 
-                </script>
-            </div>
-            <div class="col-sm-3 gauge">
-
-                <canvas id="radiator-temperature"></canvas>
-                <p id="radiator-temperature-value"></p>
+                  <canvas id="boiler-temperature"></canvas>
+                  <p id="boiler-temperature-value"></p>
 
 
-                <script>
 
-                    var target = document.getElementById('radiator-temperature'); // your canvas element
-                    var gauge = new Gauge(target).setOptions(opts); // create sexy gauge!
-                    gauge.maxValue = 100; // set max gauge value
-                    gauge.setMinValue(0);  // Prefer setter over gauge.minValue = 0
-                    gauge.animationSpeed = 1; // set animation speed (32 is default value)
-                    gauge.set(giuditta_sensors.radiator_temperature); // set actual value
+                  <script>
 
-                </script>
-            </div>
+                      var target = document.getElementById('boiler-temperature'); // your canvas element
+                      var gauge = new Gauge(target).setOptions(opts); // create sexy gauge!
+                      gauge.maxValue = 100; // set max gauge value
+                      gauge.setMinValue(0);  // Prefer setter over gauge.minValue = 0
+                      gauge.animationSpeed = 1; // set animation speed (32 is default value)
+                      gauge.set(giuditta_sensors.boiler_temperature); // set actual value
+
+                  </script>
+              </div>
+              <div class="col gauge">
+
+                  <canvas id="radiator-temperature"></canvas>
+                  <p id="radiator-temperature-value"></p>
+
+
+                  <script>
+
+                      var target = document.getElementById('radiator-temperature'); // your canvas element
+                      var gauge = new Gauge(target).setOptions(opts); // create sexy gauge!
+                      gauge.maxValue = 100; // set max gauge value
+                      gauge.setMinValue(0);  // Prefer setter over gauge.minValue = 0
+                      gauge.animationSpeed = 1; // set animation speed (32 is default value)
+                      gauge.set(giuditta_sensors.radiator_temperature); // set actual value
+
+                  </script>
+              </div>
+          </div>
         </div>
+
 
 
         <script>
