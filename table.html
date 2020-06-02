@@ -39,19 +39,22 @@
         </nav>
 
         <div class="container-fluid" style="margin-top: 80px;">
-            <div class="row">
-                <div class="col-md-2">
-                    <button class="btn start-mini" type="button" onclick="createRecipe()" >ADD</button>
-                </div>
-                <div class="col-md-2" style="max-width: 320px;">
-                    <input type="text" name="recipe_name" id="recipe_name" value="" placeholder="Recipe Name">
-                </div>
+            <div class="row" style="max-width: 360px">
 
-                <div class="col-md-2">
-                    <p>Edit:</p>
-                </div>
-                <div class="col-md-2" style="max-width: 320px;">
-                    <select class="form-control"  style="text-align: center; font-size: 16px;" >
+              <div class="col">
+                  <button class="btn btn-tag start-mini" type="button" onclick="createRecipe()" >Add</button>
+              </div>
+              <div class="col">
+                  <input type="text" name="recipe_name" id="recipe_name" value="" placeholder="Recipe Name">
+              </div>
+
+          </div>
+          <div class="row"style="margin-top: 10px; max-width: 360px">
+            <div class="col">
+                <button class="btn btn-tag start-mini" type="button" onclick="editRecipeById(edit_recipe)" >Edit</button>
+            </div>
+                <div class="col" style="max-width: 320px;">
+                    <select id="edit_recipe"class="form-control"  style="text-align: center; font-size: 16px;" >
                         <option value="">Select A Recipe</option>
                         <option value="nome_ricetta" id="op1"  onclick="editRecipe(value)">Recipe</option>
                         <option value="1" id="op1"  onclick="editRecipe(value)">Recipe 1</option>
@@ -63,11 +66,8 @@
 
             </div>
         </div>
-        <script>
-            table_data[0]["name"]="dddd";
-            console.log(table_data[0].name)
-        </script>
-        <div class="container-fluid" style="margin-top: 80px;">
+
+        <div class="container-fluid" style="margin-top: 40px;">
             <div id="table"></div>
         </div>
 
@@ -114,7 +114,10 @@
 
         <div class="row" style="margin: 10px 20px">
             <div class="col-lg">
-                <button class="btn btn-tag start" type="button" >Edit Recipe</button>
+                <button class="btn btn-tag start" type="button" >Confirm Changes To Recipe</button>
+            </div>
+            <div class="col-lg">
+                <button class="btn btn-tag start" type="button" >Delete Recipe</button>
             </div>
 
 

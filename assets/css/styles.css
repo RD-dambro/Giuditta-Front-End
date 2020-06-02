@@ -5,7 +5,7 @@
 
 .gauge{
     min-width: 320px;
-    
+
     margin: 5px 0px;
     text-align: center;
 }
@@ -57,15 +57,19 @@
     border-radius: 10px;
 }
 .start-mini{
-    
     text-align: center;
     color: #ecfbff;
     background: rgb(1,0,138);
-    height: 50px;
+    min-height: 40px;
+    height: 40px;
     text-align: center;
     border-radius: 10px;
+    margin:0px 0px;
 }
 
 .start:active{
+    background-color: rgb(40, 141, 196);
+}
+.start-mini:active{
     background-color: rgb(40, 141, 196);
 }
