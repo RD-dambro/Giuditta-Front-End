@@ -43,138 +43,147 @@
 
 
 
+        <div class="container">
+          <div class="row" style="margin-top: 80px;">
+              <div class="col gauge">
 
-        <div class="row ext" style="margin-top: 80px;">
-            <div class="col-sm gauge">
+                  <canvas id="room-temperature"></canvas>
+                  <p id="room-temperature-value"></p>
 
-                <canvas id="room-temperature"></canvas>
-                <p id="room-temperature-value"></p>
+                  <script>
 
-                <script>
+                      var target = document.getElementById('room-temperature'); // your canvas element
+                      var gauge = new Gauge(target).setOptions(opts); // create sexy gauge!
+                      gauge.maxValue = 100; // set max gauge value
+                      gauge.setMinValue(0);  // Prefer setter over gauge.minValue = 0
+                      gauge.animationSpeed = 1; // set animation speed (32 is default value)
+                      gauge.set(giuditta_sensors.room_temperature); // set actual value
 
-                    var target = document.getElementById('room-temperature'); // your canvas element
-                    var gauge = new Gauge(target).setOptions(opts); // create sexy gauge!
-                    gauge.maxValue = 100; // set max gauge value
-                    gauge.setMinValue(0);  // Prefer setter over gauge.minValue = 0
-                    gauge.animationSpeed = 1; // set animation speed (32 is default value)
-                    gauge.set(giuditta_sensors.room_temperature); // set actual value
+                  </script>
+              </div>
+              <div class="col gauge">
 
-                </script>
-            </div>
-            <div class="col-sm gauge">
-
-                <canvas id="room-humidity"></canvas>
-                <p id="room-humidity-value"></p>
+                  <canvas id="room-humidity"></canvas>
+                  <p id="room-humidity-value"></p>
 
 
-                <script>
+                  <script>
 
-                    var target = document.getElementById('room-humidity'); // your canvas element
-                    var gauge = new Gauge(target).setOptions(opts); // create sexy gauge!
-                    gauge.maxValue = 100; // set max gauge value
-                    gauge.setMinValue(0);  // Prefer setter over gauge.minValue = 0
-                    gauge.animationSpeed = 1; // set animation speed (32 is default value)
-                    gauge.set(giuditta_sensors.room_humidity); // set actual value
+                      var target = document.getElementById('room-humidity'); // your canvas element
+                      var gauge = new Gauge(target).setOptions(opts); // create sexy gauge!
+                      gauge.maxValue = 100; // set max gauge value
+                      gauge.setMinValue(0);  // Prefer setter over gauge.minValue = 0
+                      gauge.animationSpeed = 1; // set animation speed (32 is default value)
+                      gauge.set(giuditta_sensors.room_humidity); // set actual value
 
-                </script>
-            </div>
+                  </script>
+              </div>
+          </div>
+        </div>
+        <div class="container">
+          <div class="row">
+              <div class="col gauge"><button class="btn btn-tag" type="button" id="watering" value="OFF" onclick="toggle(id)">Watering: OFF</button></div>
+              <div class="col gauge"><button class="btn btn-tag" type="button" id="air_ventilation" value="OFF" onclick="toggle(id)">Air Ventilation: OFF</button></div>
+              <div class="col gauge"><button class="btn btn-tag" type="button" id="fog_machine" value="OFF" onclick="toggle(id)">Fog Machine: OFF</button></div>
+          </div>
         </div>
 
-        <div class="row ext">
-            <div class="col-lg"><button class="btn btn-tag" type="button" id="watering" value="OFF" onclick="toggle(id)">Watering: OFF</button></div>
-            <div class="col-lg"><button class="btn btn-tag" type="button" id="air_ventilation" value="OFF" onclick="toggle(id)">Air Ventilation: OFF</button></div>
-            <div class="col-lg"><button class="btn btn-tag" type="button" id="fog_machine" value="OFF" onclick="toggle(id)">Fog Machine: OFF</button></div>
+        <div class="container">
+          <div class="row">
+              <div class="col gauge">
+
+                  <canvas id="boiler-temperature"></canvas>
+                  <p id="boiler-temperature-value"></p>
 
 
+
+                  <script>
+
+                      var target = document.getElementById('boiler-temperature'); // your canvas element
+                      var gauge = new Gauge(target).setOptions(opts); // create sexy gauge!
+                      gauge.maxValue = 100; // set max gauge value
+                      gauge.setMinValue(0);  // Prefer setter over gauge.minValue = 0
+                      gauge.animationSpeed = 1; // set animation speed (32 is default value)
+                      gauge.set(giuditta_sensors.boiler_temperature); // set actual value
+
+                  </script>
+              </div>
+              <div class="col gauge">
+
+                  <canvas id="radiator-temperature"></canvas>
+                  <p id="radiator-temperature-value"></p>
+
+
+                  <script>
+
+                      var target = document.getElementById('radiator-temperature'); // your canvas element
+                      var gauge = new Gauge(target).setOptions(opts); // create sexy gauge!
+                      gauge.maxValue = 100; // set max gauge value
+                      gauge.setMinValue(0);  // Prefer setter over gauge.minValue = 0
+                      gauge.animationSpeed = 1; // set animation speed (32 is default value)
+                      gauge.set(giuditta_sensors.radiator_temperature); // set actual value
+
+                  </script>
+              </div>
+          </div>
         </div>
 
-        <div class="row ext">
-            <div class="col-sm gauge">
-
-                <canvas id="boiler-temperature"></canvas>
-                <p id="boiler-temperature-value"></p>
-
-
-
-                <script>
-
-                    var target = document.getElementById('boiler-temperature'); // your canvas element
-                    var gauge = new Gauge(target).setOptions(opts); // create sexy gauge!
-                    gauge.maxValue = 100; // set max gauge value
-                    gauge.setMinValue(0);  // Prefer setter over gauge.minValue = 0
-                    gauge.animationSpeed = 1; // set animation speed (32 is default value)
-                    gauge.set(giuditta_sensors.boiler_temperature); // set actual value
-
-                </script>
-            </div>
-            <div class="col-sm gauge">
-
-                <canvas id="radiator-temperature"></canvas>
-                <p id="radiator-temperature-value"></p>
-
-
-                <script>
-
-                    var target = document.getElementById('radiator-temperature'); // your canvas element
-                    var gauge = new Gauge(target).setOptions(opts); // create sexy gauge!
-                    gauge.maxValue = 100; // set max gauge value
-                    gauge.setMinValue(0);  // Prefer setter over gauge.minValue = 0
-                    gauge.animationSpeed = 1; // set animation speed (32 is default value)
-                    gauge.set(giuditta_sensors.radiator_temperature); // set actual value
-
-                </script>
-            </div>
+        <div class="container">
+          <div class="row">
+              <div class="col gauge"><button class="btn btn-tag" type="button" id="boiler" value="OFF" onclick="toggle(id)">Boiler: OFF</button></div>
+              <div class="col gauge"><button class="btn btn-tag" type="button" id="radiator" value="OFF" onclick="toggle(id)">Radiator: OFF</button></div>
+          </div>
         </div>
 
-        <div class="row ext">
-            <div class="col-lg"><button class="btn btn-tag" type="button" id="boiler" value="OFF" onclick="toggle(id)">Boiler: OFF</button></div>
-            <div class="col-lg"><button class="btn btn-tag" type="button" id="radiator" value="OFF" onclick="toggle(id)">Radiator: OFF</button></div>
+        <div class="container">
+          <div class="row">
+              <div class="col gauge">
+                  <button class="btn btn-tag" type="button" id="white_led" value="OFF" onclick="toggle(id)">White LED: OFF</button>
+                  <div class="row" style="margin-bottom: 10px;">
+
+                      <div class="col-xs-9 slidecontainer">
+                          <input class="slider" type="range" min="0" max="100" step="1" value="0" id="white_duty_cycle" oninput="slideUpdate(id)"></input>
+                      </div>
+                      <div class="col-xs-3" id="white_duty_cycle_value">0%</div>
+                  </div>
+              </div>
+
+              <div class="col gauge">
+                  <button class="btn btn-tag" type="button" id="blue_red_led" value="OFF" onclick="toggle(id)">Blue-Red LED: OFF</button>
+                  <div class="row" style="margin-bottom: 10px;">
+                      <div class="col-xs-9 slidecontainer">
+                          <input class="slider" type="range" min="0" max="100" step="1" value="0" id="br_duty_cycle" oninput="slideUpdate(id)"></input>
+                      </div>
+                      <div class="col-xs-3" id="br_duty_cycle_value">0%</div>
+                  </div>
+              </div>
+
+              <div class="col gauge">
+                  <button class="btn btn-tag" type="button" id="motor" value="OFF" onclick="toggle(id)">Motor: OFF</button>
+                  <div class="row" style="margin-bottom: 10px;">
+                      <div class="col-xs-9 slidecontainer">
+                          <input class="slider" type="range" min="0" max="100" step="1" value="0" id="motor_speed" oninput="slideUpdate(id)"></input>
+                      </div>
+                      <div class="col-xs-3" id="motor_speed_value">0%</div>
+                  </div>
+
+              </div>
+
+          </div>
         </div>
 
-        <div class="row ext">
-            <div class="col-md">
-                <button class="btn btn-tag" type="button" id="white_led" value="OFF" onclick="toggle(id)">White LED: OFF</button>
-                <div class="row" style="margin-bottom: 10px;">
+        <div class="container">
+          <div class="row">
+              <div class="col gauge">
+                  <button class="btn btn-tag" type="button" id="invertion" value="OFF" onclick="toggle(id)">Invertion: OFF</button>
+              </div>
 
-                    <div class="col-xs-9 slidecontainer">
-                        <input class="slider" type="range" min="0" max="100" step="1" value="0" id="white_duty_cycle" oninput="slideUpdate(id)"></input>
-                    </div>
-                    <div class="col-xs-3" id="white_duty_cycle_value">0%</div>
-                </div>
-            </div>
-
-            <div class="col-md">
-                <button class="btn btn-tag" type="button" id="blue_red_led" value="OFF" onclick="toggle(id)">Blue-Red LED: OFF</button>
-                <div class="row" style="margin-bottom: 10px;">
-                    <div class="col-xs-9 slidecontainer">
-                        <input class="slider" type="range" min="0" max="100" step="1" value="0" id="br_duty_cycle" oninput="slideUpdate(id)"></input>
-                    </div>
-                    <div class="col-xs-3" id="br_duty_cycle_value">0%</div>
-                </div>
-            </div>
-
-            <div class="col-md">
-                <button class="btn btn-tag" type="button" id="motor" value="OFF" onclick="toggle(id)">Motor: OFF</button>
-                <div class="row" style="margin-bottom: 10px;">
-                    <div class="col-xs-9 slidecontainer">
-                        <input class="slider" type="range" min="0" max="100" step="1" value="0" id="motor_speed" oninput="slideUpdate(id)"></input>
-                    </div>
-                    <div class="col-xs-3" id="motor_speed_value">0%</div>
-                </div>
-
-            </div>
-
+              <div class="col gauge">
+                  <button class="btn btn-tag" type="button" id="UV" value="OFF" onclick="toggle(id)">UV Lamp: OFF</button>
+              </div>
+          </div>
         </div>
 
-        <div class="row ext">
-            <div class="col-md">
-                <button class="btn btn-tag" type="button" id="invertion" value="OFF" onclick="toggle(id)">Invertion: OFF</button>
-            </div>
-
-            <div class="col-md">
-                <button class="btn btn-tag" type="button" id="UV" value="OFF" onclick="toggle(id)">UV Lamp: OFF</button>
-            </div>
-        </div>
 
 
         <script>
